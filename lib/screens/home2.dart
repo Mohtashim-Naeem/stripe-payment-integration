@@ -34,9 +34,14 @@ class _hometwoState extends State<hometwo> {
             // await displayPaymentSheet();
           },
           child: Container(
+            decoration: BoxDecoration(
+                color: Colors.indigo,
+                border: Border.all(),
+                borderRadius: BorderRadius.circular(
+                  20,
+                )),
             height: 50,
             width: 200,
-            color: Colors.indigo,
             child: const Center(
               child: Text(
                 'Pay',
@@ -71,7 +76,7 @@ class _hometwoState extends State<hometwo> {
                   paymentIntentClientSecret: paymentIntentData![
                       'client_secret'], //Gotten from payment intent
                   style: ThemeMode.dark,
-                  merchantDisplayName: 'Ikay'))
+                  merchantDisplayName: 'Mohtashim Naeem'))
           .then((value) {});
       print(
           '==================================DONE===========================');
@@ -112,8 +117,7 @@ class _hometwoState extends State<hometwo> {
       var response = await http.post(
         Uri.parse('https://api.stripe.com/v1/payment_intents'),
         headers: {
-          'Authorization':
-              'Bearer ${dotenv.env['sk_test_51OOy3uDC62mLUVolTH8e9UZiLQw16XATPRWPsTr45rbaRW01JzbQM0pBCAEKYXXWWJoMgbAB7PzGVQghHaLT3Zq900csI2qFGG']}',
+          'Authorization': 'Bearer ${dotenv.env['STRIPE_SECRET']}',
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: body,
